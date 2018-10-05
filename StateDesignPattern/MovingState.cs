@@ -8,11 +8,24 @@ namespace StateDesignPattern
 {
     class MovingState : IState
     {
-        public virtual string Move(Context s) { return ""; }
-        public virtual string Attach(Context s) { return ""; }
-        public virtual string Stop(Context s) { return ""; }
-        public virtual string Run(Context s) { return ""; }
-        public virtual string Panic(Context s) { return ""; }
-        public virtual string CalmDown(Context s) { return ""; }
+        public override string Move(Context s) {
+            return "You are already moving randomly";
+        }
+        public override string Attack(Context s) {
+            return "You need to stop moving first";
+        }
+        public override string Stop(Context s) {
+            s.State = new RestingState();
+            return "You stand still in the dark room";
+        }
+        public override string Run(Context s) { return "You are already running around"; }
+        public override string Panic(Context s) {
+            s.State = new PanickingState();
+            return "You start panicking and begin seeing things";
+        }
+        public override string CalmDown(Context s) {
+            s.State = new RestingState();
+            return "Yoy stand still and relax";
+        }
     }
 }
