@@ -32,8 +32,6 @@ namespace CommandPattern
                 Redo = delegate { Redo.Log(); doc.Print(); };
             }
         }
-
-        
     }
 
     public class Document
